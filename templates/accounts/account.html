@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Sua conta
+{% endblock %}
+
+{% block style %}
+<style>
+  #home {
+    margin: -5px auto;
+    padding: -30px;
+    margin-right: 500px;
+  }
+  .button-album > a {
+    margin: 10;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<ul class="nav nav-tabs">
+  <li class="active">
+    <a data-toggle="tab" href="#home">Perfil
+    </a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#albums">Albuns
+    </a>
+  </li>
+  <li>
+    <a data-toggle="tab" href="#contacts">Contatos
+    </a>
+  </li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="home">
+    <hr />
+    <div class="form-group">
+      <div class="col-xs-4">
+        <label>Nome:
+        </label>{{musician}}
+      </div>
+      <div class="col-xs-4">
+        <label>CPF:
+        </label>{{musician.document_number}}
+      </div>
+      <div class="col-xs-4">
+        <label>E-mail:
+        </label>{{musician.email}}
+      </div>
+      <div class="col-xs-4">
+        <label>Estilos Musicais:
+        </label>{{musician.styles}}
+          <a href="{% url 'accounts:update' %}" class="btn btn-info mt-30" style="width: 20vw; margin: 10px">Editar perfil</a>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div class="tab-pane" id="albums">
+    <h2>
+    </h2>
+    {% include 'accounts/album/albums.html' %}
+  </div>
+  <div class="tab-pane" id="contacts">
+    <h2>
+    </h2>
+    {% include 'accounts/contact/contacts.html' %}
+  </div>
+  <!--/tab-pane-->
+  <div class="tab-pane" id="settings">
+  </div>
+</div>
+<!--/tab-content-->
+{% endblock %}

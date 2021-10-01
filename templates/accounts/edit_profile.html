@@ -1,0 +1,57 @@
+{% extends 'base_site.html' %}
+{% load i18n widget_tweaks %}
+{% block content %}
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+  <div class="bradcumbContent">
+    <h2>Músico</h2>
+  </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+<!-- ##### Signup Area Start ##### -->
+<section class="login-area section-padding-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="login-content">
+          <h3>Editar informações de Músico</h3>
+          <!-- Signup Form -->
+          <div class="login-form">
+            <form method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.errors }}
+              {{ form.non_field_errors }}
+              <div class="form-group">
+                {{ form.image.label_tag }}
+                <br />
+                {% render_field form.image class+='mb-15' %}
+                {% for error in form.image.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+                <br />
+
+                {{ form.music_styles.label_tag }}
+                {% render_field form.music_styles class+='form-control' %}
+                {% for error in form.music_styles.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+                {{ form.description.label_tag }}
+                {% render_field form.description class+='form-control' %}
+                {% for error in form.description.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+              </div>
+              <button type="submit" value="Update" class="btn btn-info mt-30" style="width: 20vw;">Atualizar</button>
+              <a href="{% url 'accounts:account' %}" class="btn btn-dark mt-30" style="width: 20vw;">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

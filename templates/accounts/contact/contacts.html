@@ -1,0 +1,42 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td colspan="3">
+        <div class"panel-heading">
+          <a href="{% url 'accounts:account' %}" class="btn btn-secondary"><i class="fas fa-back"></i> Voltar</a>
+          <a href="{% url 'accounts:contacts-create' %}" class="btn btn-info pull-right"><i class="fas fa-plus"></i> Novo</a>
+        </div>
+      </td>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th>Telefone</th>
+      <th>WhatsApp</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for contact in contacts %}
+    <tr>
+      <td>{{contact.phonenumber}}
+      </td>
+      <td>
+        {% if contact.whatsapp == True %}
+          Sim
+        {% else %}
+          Não
+        {% endif %}
+      </td>
+      <td>
+        <div class="panel-heading">
+          <a href="{% url 'accounts:contacts-update' index=contact.id %}" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a>
+        </div>
+        <div class="panel-heading">
+          <a href="{% url 'accounts:contacts-delete' index=contact.id %}" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,0 +1,63 @@
+{% load static %}
+<header class="header-area">
+  <!-- Navbar Area -->
+  <div class="oneMusic-main-menu">
+    <div class="classy-nav-container breakpoint-off">
+      <div class="container">
+        <!-- Menu -->
+        <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+          <!-- Nav brand -->
+          <a href="{% url 'home:index'%}" class="nav-brand" style="color: white;">
+            Composer
+          </a>
+          <!-- Navbar Toggler -->
+          <div class="classy-navbar-toggler">
+            <span class="navbarToggler">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </div>
+          <!-- Menu -->
+          <div class="classy-menu">
+            <!-- Close Button -->
+            <div class="classycloseIcon">
+              <div class="cross-wrap">
+                <span class="top">
+                </span>
+                <span class="bottom">
+                </span>
+              </div>
+            </div>
+            <!-- Nav Start -->
+            <div class="classynav">
+              <ul>
+                <li><a href="{% url 'home:index'%}">Home</a></li>
+                <li><a href="{% url 'search:search' %}">Artistas</a></li>
+                <li><a href="https://academi575265516.wordpress.com/">Sobre</a></li>
+              </ul>
+              <!-- Login/Register & Cart Button -->
+              <div class="login-register-cart-button d-flex align-items-center">
+                <!-- Login/Register -->
+                <div class="classynav login-register-btn mr-50">
+                  <ul>
+                    {% if request.user.is_authenticated %}
+                      {% if musician %}
+                        <a href="{% url 'music:profile' slug=musician.slug %}" id="loginBtn">Seu Perfil</a>
+                      {% else %}
+                        USUÁRIO AUTENTICADO PORÉM NÃO É MÚSICO!!!
+                      {% endif %}
+                    {% else %}
+                      <a href="{% url 'login' %}" id="loginBtn">Entrar / Cadastrar</a>
+                    {% endif %}
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- Nav End -->
+          </div>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>

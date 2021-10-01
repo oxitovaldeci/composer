@@ -1,0 +1,76 @@
+{% extends 'base_site.html' %}
+{% load i18n widget_tweaks %}
+{% block content %}
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+  <div class="bradcumbContent">
+    <h2>Cadastro
+    </h2>
+  </div>
+</section>
+<!-- ##### Breadcumb Area End ##### -->
+<!-- ##### Signup Area Start ##### -->
+<section class="login-area section-padding-100">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-8">
+        <div class="login-content">
+          <h3>Cadastre-se</h3>
+          <!-- Signup Form -->
+          <div class="login-form">
+            <form method="post">
+              {% csrf_token %}
+              {{ form.errors }}
+              {{ form.non_field_errors }}
+              <div class="form-group">
+                {{ form.name.label_tag }}
+                {% render_field form.name class+='form-control' %}
+                {% for error in form.name.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+                {{ form.document_number.label_tag }}
+                {% render_field form.document_number class+='form-control' %}
+                {% for error in form.document_number.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+                {{ form.id_card.label_tag }}
+                {% render_field form.id_card class+='form-control' %}
+                {% for error in form.id_card.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+                {{ form.date_of_birth.label_tag }}
+                {% render_field form.date_of_birth class+='form-control' %}
+                  {% for error in form.date_of_birth.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+                {{ form.email.label_tag }}
+                {% render_field form.email class+='form-control' %}
+                {% for error in form.email.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
+                {{ form.password.label_tag }}
+                {% render_field form.password class+='form-control' type="password" %}
+                {% for error in form.password.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+              </div>
+              <button type="submit" class="btn btn-info mt-30" style="width: 20vw;">Cadastrar</button>
+              <a href="{% url 'login' %}" class="btn btn-dark mt-30" style="width: 20vw;">Já tenho conta</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

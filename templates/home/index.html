@@ -1,0 +1,110 @@
+{% extends 'base_site.html' %}
+{% load static %}
+{% block content %}
+<section class="hero-area">
+  <div class="hero-slides owl-carousel">
+    <!-- Single Hero Slide -->
+    <div class="single-hero-slide d-flex align-items-center justify-content-center">
+      <!-- Slide Img -->
+        <div class="slide-img bg-img" style="background-image: url({{album.cover.url}});">
+        </div>
+        <!-- Slide Content -->
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div class="hero-slides-content text-center">
+                <h6 data-animation="fadeInUp" data-delay="100ms">{{album}}
+                </h6>
+                <h2 data-animation="fadeInUp" data-delay="300ms">{{album.musician}}
+                  <span>{{album.musician}}
+                  </span>
+                </h2>
+                <a data-animation="fadeInUp" data-delay="500ms" href="#" class="btn oneMusic-btn mt-50">Descubra mais
+                  <i class="fa fa-angle-double-right">
+                  </i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Hero Area End ##### -->
+<!-- ##### Latest Albums Area Start ##### -->
+<section class="latest-albums-area section-padding-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="section-heading style-2">
+          <p>Lançamentos
+          </p>
+          <h2>Últimos albuns
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-9">
+        <div class="ablums-text text-center mb-70">
+          <p>Nam tristique ex vel magna tincidunt, ut porta nisl finibus. Vivamus eu dolor eu quam varius rutrum. Fusce nec justo id sem aliquam fringilla nec non lacus. Suspendisse eget lobortis nisi, ac cursus odio. Vivamus nibh velit, rutrum at ipsum ac, dignissim iaculis ante. Donec in velit non elit pulvinar pellentesque et non eros.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="albums-slideshow owl-carousel">
+          {% for album in lastAlbums %}
+            <div class="single-album">
+              <img src="{{album.cover.url}}" alt="">
+              <div class="album-info">
+                <a href="#"><h5>{{album}}</h5></a>
+                <p>{{album.description}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ##### Latest Albums Area End ##### -->
+
+<!-- ##### Buy Now Area End ##### -->
+<!-- ##### Featured Artist Area Start ##### -->
+{% comment %}
+<section class="featured-artist-area section-padding-100 bg-img bg-overlay bg-fixed" style="background-image: url({% static 'img/bg-img/bg-4.jpg'%});">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-12 col-md-5 col-lg-4">
+        <div class="featured-artist-thumb">
+          <img src="{{song.album.cover.url}}" alt="" style="width: 15vw;">
+        </div>
+      </div>
+      <div class="col-12 col-md-7 col-lg-8">
+        <div class="featured-artist-content">
+          <!-- Section Heading -->
+          <div class="section-heading white text-left mb-30">
+            <p>{{song.name}}</p>
+          </div>
+          <div class="song-play-area">
+            <div class="song-name">
+              <p>{{song.name}}
+              </p>
+            </div>
+            <audio id="player" controls="controls">
+                <source src="{{song.file.url}}" type="audio/mp3">
+            </audio>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomment %}
+<!-- ##### Featured Artist Area End ##### -->
+<!-- ##### Miscellaneous Area Start ##### -->
+{% endblock %}
+{% block footer %}
+{% include 'footer_site.html' %}
+{% endblock %}

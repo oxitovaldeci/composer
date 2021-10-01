@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load i18n widget_tweaks %}
+
+{% block title %}
+Adicionar/Editar Contato
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="login-content">
+        <div class="login-form">
+          <form method="post">
+            {% csrf_token %}
+            {{ form.errors }}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+              {{ form.phonenumber.label_tag }}
+              {% render_field form.phonenumber class+='form-control' %}
+              {% for error in form.phonenumber.errors %}
+                <div class="alert alert-danger">{{ error }}
+                </div>
+              {% endfor %}
+
+              {{ form.kind.label_tag }}
+              {% render_field form.kind class+='form-control' %}
+              {% for error in form.kind.errors %}
+                <div class="alert alert-danger">{{ error }}
+                </div>
+              {% endfor %}
+
+              <br />
+              <center>
+                {{ form.whatsapp.label_tag }}
+                {% render_field form.whatsapp class+='form-control' %}
+                {% for error in form.whatsapp.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+              </center>
+            </div>
+            <button type="submit" class="btn btn-info mt-30" style="width: 20vw;"> Confirmar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,48 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td colspan="5">
+        <div class"panel-heading">
+          <a href="{% url 'accounts:account' %}" class="btn btn-secondary"><i class="fas fa-back"></i> Voltar</a>
+          <a href="{% url 'accounts:albums-create' %}" class="btn btn-info pull-right"><i class="fas fa-plus"></i> Adicionar Álbum</a>
+        </div>
+      </td>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ano de lançamento</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for album in albums %}
+    <tr>
+      <td>
+        {% if album.cover %}
+          <img src="{{ album.cover.url }}" class="avatar img-square img-thumbnail" alt="avatar"></img>
+        {% else %}
+          <img src="/media/profile_placeholder.png" class="avatar img-circle img-thumbnail" alt="avatar"></img>
+        {% endif %}
+      </td>
+      <td>{{album.name}}</td>
+      <td>{{album.description}}</td>
+      <td>{{album.release_year}}</td>
+      <td class="button-album">
+        <div class="panel-heading">
+          <a href="{% url 'accounts:songs-list' album_index=album.id %}" class="btn btn-primary"><i class="fas fa-accounts"></i> Músicas</a>
+        </div>
+        <div class="panel-heading">
+          <a href="{% url 'accounts:albums-update' index=album.id %}" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a>
+        </div>
+        <div class="panel-heading">
+          <a href="{% url 'accounts:albums-delete' index=album.id %}" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

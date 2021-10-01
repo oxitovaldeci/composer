@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block style %}
+<style>
+  #home{
+    margin: -5px auto;
+    padding: -30px;
+    margin-right: 500px;
+  }
+  .button-album > a{
+    margin: 10;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+{% include 'accounts/song/songs.html' %}
+{% endblock %}

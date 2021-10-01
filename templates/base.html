@@ -1,0 +1,70 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<!------ Include the above in your HEAD tag ---------->
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js">
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+</script>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<!------ Include the above in your HEAD tag ---------->
+<head>
+  <title>{% block title %}{% endblock %} </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+  </script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+  </script>
+  <style>
+    .header-area .oneMusic-main-menu .classy-navbar {
+      background-color: black;
+      padding: 0;
+    }
+    .oneMusic-main-menu {
+      position: fixed;
+      width: 100%;
+      height: 70px;
+      top: 0;
+      left: 0;
+      z-index: 9999;
+      background-color: #000000;
+      box-shadow: 0 5px 50px 15px rgba(0, 0, 0, 0.2);
+    }
+    .classy-nav-container {
+      background-color: #000000 !important;
+    }
+    .header-area {
+      top: 0px;
+    }
+    .container {
+      margin-right: auto;
+    }
+    .container.bootstrap.snippet {
+      margin-top: 135px;
+    }
+  </style>
+  <style>{% block style %}{% endblock %}
+  </style>
+</head>
+<body>
+{% include 'base_site.html' %}
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-sm-10">
+      <h1>{{ user.name }}</h1>
+    </div>
+  </div>
+  <div class="row">
+    {% include 'side.html' %}
+    <div class="col-sm-9">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </div>
+</div>
+</body>

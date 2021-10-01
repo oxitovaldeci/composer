@@ -1,0 +1,48 @@
+<div class="col-sm-3">
+  <!--left col-->
+  <div class="text-center">
+    <h3>{{ musician.name }}</h3>
+    {% if musician.image %}
+      <img src="{{musician.image.url}}" class="avatar img-circle" alt="avatar"></img>
+    {% else %}
+      <img src="/media/profile_placeholder.png" class="avatar img-circle" alt="avatar"></img>
+    {% endif %}
+    <h6>
+      <a href="{% url 'accounts:update' %}" class="mb-30 text-center center-block "><i class="fas file-upload"></i>Trocar foto</a>
+    </h6>
+  </div>
+<div class="panel panel-default">
+  <div class="panel-heading">Website
+    <i class="fa fa-link fa-1x">
+    </i>
+  </div>
+  <div class="panel-body">
+    <i class="fas"></i>
+    <a href="{% url 'music:profile' slug=musician.slug %}" class="pull-left" target="_blank">Visualizar Perfil</a>
+    </a>
+  </div>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Ajustes
+    <i class="fa fa-sliders-h fa-1x"></i>
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item text-right">
+      <a href="{% url 'accounts:account' %}" class="pull-left"><i class="fas fa-user-circle"></i> Conta
+      </a>
+    </li>
+    <li class="list-group-item text-right">
+      <a href="{% url 'home:index' %}" class="pull-left"><i class="fas fa-home"></i> Início
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="panel panel-default">
+  <div class="panel-heading">Ações
+  </div>
+  <div class="panel-body">
+    <i class="fas"></i>
+    <a href="{% url 'logout' %}" class="pull-left">Sair</a>
+  </div>
+</div>
+</div>
