@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q9tw+rbvf#k^6f#rq$+wffeh2_goy$5x^vg4kngwb!m2^xkf1c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG')
+DEBUG = config('DEBUG') == "True"
 
 ALLOWED_HOSTS = []
 
@@ -171,3 +171,5 @@ if not DEBUG:
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static/'),
 )
+
+print(DEBUG)
