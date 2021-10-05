@@ -21,7 +21,7 @@ def squarify(file):
     image = image.convert("RGB")
 
     width, height = image.size
-    max_length = 450
+    max_length = 2000
 
     if height != width:
         top = 0

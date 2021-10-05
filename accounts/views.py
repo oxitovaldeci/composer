@@ -29,7 +29,7 @@ class MusicianCreateView(CreateView):
     model = Musician
     template_name = "accounts/form.html"
     fields = [
-        "name", "email", "document_number", "id_card", "date_of_birth", "password"
+        "name", "email", "date_of_birth", "password"
     ]
     success_url = reverse_lazy("login")
     redirect_authenticated_user = True

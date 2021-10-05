@@ -29,22 +29,8 @@
                   </div>
                 {% endfor %}
 
-                {{ form.document_number.label_tag }}
-                {% render_field form.document_number class+='form-control' %}
-                {% for error in form.document_number.errors %}
-                  <div class="alert alert-danger">{{ error }}
-                  </div>
-                {% endfor %}
-
-                {{ form.id_card.label_tag }}
-                {% render_field form.id_card class+='form-control' %}
-                {% for error in form.id_card.errors %}
-                  <div class="alert alert-danger">{{ error }}
-                  </div>
-                {% endfor %}
-
                 {{ form.date_of_birth.label_tag }}
-                {% render_field form.date_of_birth class+='form-control' %}
+                {% render_field form.date_of_birth class+='form-control' type="date" %}
                   {% for error in form.date_of_birth.errors %}
                   <div class="alert alert-danger">{{ error }}
                   </div>

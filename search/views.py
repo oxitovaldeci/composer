@@ -9,6 +9,8 @@ from composer_utils import cprint
 def search_view(request, *args, **kwargs):
     if hasattr(request.user, "musician"):
         musician = request.user.musician
+    else:
+        musician = None
 
     result = None
     if request.GET.get("query"):

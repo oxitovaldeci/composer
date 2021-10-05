@@ -1,16 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
+{% extends 'musician/base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="description" content="">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>{{ album.name }}</title>
-  <link rel="icon" href="">
-  <link rel="stylesheet" href="{% static 'css/style.css'%}">
-  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+{% block style_overlap %}
 <style>
 html { box-sizing: border-box; }
 *, *::before, *::after { box-sizing: inherit; }
@@ -452,10 +442,9 @@ button {
   padding: 20px 0;
 }
 </style>
-</head>
+{% endblock %}
 
-<body>
-{% include "header_site.html" %}
+{% block content %}
 <div id="{{ forloop.counter }}" class="player paused">
   <div class="album">
     <div class="cover">
@@ -478,5 +467,4 @@ button {
     </div>
   </div>
 </div>
-</body>
-</html>
+{% endblock %}

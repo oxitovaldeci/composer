@@ -56,8 +56,6 @@ class SocialMedia(models.Model):
 
 class Musician(User):
     name = models.CharField("Nome", max_length=100)
-    document_number = models.CharField("CPF", unique=True, max_length=100)
-    id_card = models.CharField("Identidade", blank=True, null=True, max_length=100)
     date_of_birth = models.DateField("Data de Nascimento", blank=False, null=True)
     description = models.TextField(_("Descrição do Perfil"))
     image = models.ImageField(_("Foto"), upload_to="images/profile/", default='profile_placeholder.png')

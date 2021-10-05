@@ -5,8 +5,8 @@ body {
   background-color: #414141;
 }
 #vomnibar ol, #vomnibar ul {
-  list-style: none;
-  display: none;
+  /* list-style: none; */
+  /* display: none; */
 }
 #vomnibar {
   /* display: block; */
@@ -29,7 +29,9 @@ body {
   flex-wrap: wrap;
   align-content: space-around;
   justify-content: center;
-  height: 300px
+  height: 350px;
+  padding-top: 150px;
+  box-sizing: unset;
 }
 #vomnibar input {
   color: #000;
@@ -40,11 +42,11 @@ body {
   padding: 4px;
   background-color: white;
   border-radius: 3px;
-  border: 1px solid #E8E8E8;
+  border: 1px solid #9090ee;
   box-shadow: #444 0px 0px 1px;
   width: 100%;
   outline: none;
-  box-sizing: border-box;
+  /* box-sizing: border-box; */
 }
 #vomnibar .vomnibarSearchArea {
   display: block;
@@ -60,7 +62,7 @@ body {
   border-radius: 0 0 4px 4px;
   list-style: none;
   padding: 10px 0;
-  padding-top: 0;
+  padding-top: 30px;
 }
 #vomnibar li {
   border-bottom: 1px solid #ddd;
@@ -139,49 +141,56 @@ body {
   visibility: hidden;
 }
 /*
-@media (prefers-color-scheme: dark) {
-  #vomnibar {
-    border: 1px solid rgba(0, 0, 0, 0.7);
-    border-radius: 6px;
+  @media (prefers-color-scheme: dark) {
+    #vomnibar {
+      border: 1px solid rgba(0, 0, 0, 0.7);
+      border-radius: 6px;
+    }
+    #vomnibar .vomnibarSearchArea, #vomnibar {
+      background-color: #35363a;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #vomnibar input {
+      background-color: #202124;
+      color: white;
+      border: none;
+    }
+    #vomnibar ul {
+      background-color: #202124;
+    }
+    #vomnibar li {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    #vomnibar li.vomnibarSelected {
+      background-color: #37383a;
+    }
+    #vomnibar li .vomnibarUrl {
+      white-space: nowrap;
+      color: #5ca1f7;
+    }
+    #vomnibar li em,
+    #vomnibar li .vomnibarTitle {
+      color: white;
+    }
+    #vomnibar li .vomnibarSource {
+      color: #9aa0a6;
+    }
+    #vomnibar li .vomnibarMatch {
+      color: white;
+    }
+    #vomnibar li em .vomnibarMatch,
+    #vomnibar li .vomnibarTitle .vomnibarMatch {
+      color: white;
+    }
   }
-  #vomnibar .vomnibarSearchArea, #vomnibar {
-    background-color: #35363a;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  #vomnibar input {
-    background-color: #202124;
-    color: white;
-    border: none;
-  }
-  #vomnibar ul {
-    background-color: #202124;
-  }
-  #vomnibar li {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  #vomnibar li.vomnibarSelected {
-    background-color: #37383a;
-  }
-  #vomnibar li .vomnibarUrl {
-    white-space: nowrap;
-    color: #5ca1f7;
-  }
-  #vomnibar li em,
-  #vomnibar li .vomnibarTitle {
-    color: white;
-  }
-  #vomnibar li .vomnibarSource {
-    color: #9aa0a6;
-  }
-  #vomnibar li .vomnibarMatch {
-    color: white;
-  }
-  #vomnibar li em .vomnibarMatch,
-  #vomnibar li .vomnibarTitle .vomnibarMatch {
-    color: white;
-  }
-}
 */
+.results {
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 {% endblock %}
 
 {% block content %}
@@ -193,7 +202,13 @@ body {
       <input type="submit" style="display: none" />
     </form>
     {% for r in result %}
-      <p>{{ r.name }}</p>
+      <a href="{% url 'music:profile' slug=r.slug %}">
+        <div class="results">
+          <img src="{{ r.image.url}}" class="" style="height: 70px;" alt="avatar"></img>
+          <h5>{{ r.name }}</h5>
+          {{ r.description }}
+        </div>
+      </a>
     {% endfor %}
   </div>
   <ul></ul>
