@@ -86,10 +86,10 @@ WSGI_APPLICATION = 'composer.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': config('DATABASE_NAME'),
-        'USER': config('DATABASE_USER'),
-        'PASSWORD': config('DATABASE_PASS'),
-        'HOST': config('DATABASE_HOST'),
+        'NAME': config('DATABASE_NAME', default="composer-db"),
+        'USER': config('DATABASE_USER', default="admin"),
+        'PASSWORD': config('DATABASE_PASS', default="admin"),
+        'HOST': config('DATABASE_HOST', default="localhost"),
         'PORT': '5432',
     }
 }
