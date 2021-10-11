@@ -29,7 +29,7 @@ class MusicianCreateView(CreateView):
     model = Musician
     template_name = "accounts/form.html"
     fields = [
-        "name", "email", "date_of_birth", "password"
+        "name", "artistic_name", "email", "date_of_birth", "password"
     ]
     success_url = reverse_lazy("login")
     redirect_authenticated_user = True
@@ -56,7 +56,7 @@ class MusicianUpdateView(UpdateView):
     model = Musician
     template_name = "accounts/edit_profile.html"
     fields = [
-        "image", "music_styles", "description"
+        "image", "artistic_name", "music_styles", "description"
     ]
     success_url = reverse_lazy("accounts:account")
 
@@ -253,3 +253,57 @@ class SongDeleteView(SongManagerView, DeleteView):
         return HttpResponseRedirect(self.success_url)
 
 # END SONG =======
+
+
+# POST ===========
+
+class PostGenericView(MusicianItemView):
+    model = Post
+    template_name = "accounts/post/form.html"
+    fields = ["title", "text", "image", "media"]
+    success_url = reverse_lazy("accounts:posts-list")
+
+
+class PostManagerView(PostGenericView):
+    def get_object(self, queryset=None):
+        return Post.objects.filter(musician=self.request.user.musician).get(id=self.kwargs["index"])
+
+
+class PostListView(MusicianItemView, ListView):
+    model = Post
+    template_name = "accounts/post/base.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["posts"] = Post.objects.filter(musician=self.request.user.musician)
+        return context
+
+
+class PostCreateView(PostGenericView, CreateView):
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.title = form.cleaned_data.pop("title")
+        post.text = form.cleaned_data.pop("text")
+        post.image = form.cleaned_data.pop("image")
+        post.media = form.cleaned_data.pop("media")
+        post.musician = self.request.user.musician
+        post.save()
+        return HttpResponseRedirect(self.success_url)
+
+
+class PostUpdateView(PostManagerView, UpdateView):
+    def form_valid(self, form):
+        post = form.save(commit=False)
+        post.title = form.cleaned_data.pop("title")
+        post.text = form.cleaned_data.pop("text")
+        post.image = form.cleaned_data.pop("image")
+        post.media = form.cleaned_data.pop("media")
+        post.musician = self.request.user.musician
+        post.save()
+        return HttpResponseRedirect(self.success_url)
+
+
+class PostDeleteView(PostManagerView, DeleteView):
+    def form_valid(self, form):
+        post = self.get_object()
+        post.delete()
+        return HttpResponseRedirect(self.success_url)

@@ -1,0 +1,46 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <td colspan="5">
+        <div class"panel-heading">
+          <a href="{% url 'accounts:account' %}" class="btn btn-secondary"><i class="fas fa-back"></i> Voltar</a>
+          <a href="{% url 'accounts:posts-create' %}" class="btn btn-info pull-right"><i class="fas fa-plus"></i> Adicionar Álbum</a>
+        </div>
+      </td>
+    </tr>
+  </thead>
+  <thead>
+    <tr>
+      <th>Cover</th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th>Ano de lançamento</th>
+      <th>Ação</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for post in posts %}
+    <tr>
+      <td>
+        {% if post.cover %}
+          <img src="{{ post.cover.url }}" class="avatar img-square img-thumbnail" alt="avatar"></img>
+        {% else %}
+          <img src="/media/profile_placeholder.png" class="avatar img-circle img-thumbnail" alt="avatar"></img>
+        {% endif %}
+      </td>
+      <td>{{post.title}}</td>
+      <td>{{post.text}}</td>
+      <td>{{post.image}}</td>
+      <td>{{post.media}}</td>
+      <td class="button-post">
+        <div class="panel-heading">
+          <a href="{% url 'accounts:posts-update' index=post.id %}" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a>
+        </div>
+        <div class="panel-heading">
+          <a href="{% url 'accounts:posts-delete' index=post.id %}" class="btn btn-danger"><i class="fas fa-trash"></i> Excluir</a>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

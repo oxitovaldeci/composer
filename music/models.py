@@ -56,12 +56,13 @@ class SocialMedia(models.Model):
 
 class Musician(User):
     name = models.CharField("Nome", max_length=100)
+    artistic_name = models.CharField("Nome Artístico", max_length=100)
     date_of_birth = models.DateField("Data de Nascimento", blank=False, null=True)
-    description = models.TextField(_("Descrição do Perfil"))
+    description = models.TextField(_("Descrição do Perfil"), blank=True, null=True)
     image = models.ImageField(_("Foto"), upload_to="images/profile/", default='profile_placeholder.png')
     slug = models.SlugField(_("Slug"), null=True)
 
-    music_styles = models.ManyToManyField("music.MusicStyle", verbose_name=_("Estilo Musical"))
+    music_styles = models.ManyToManyField("music.MusicStyle", verbose_name=_("Estilo Musical"), blank=True)
 
     created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
     updated_at = models.DateTimeField(_("Data Última Modificação"), auto_now=True)
@@ -121,8 +122,10 @@ class Song(models.Model):
 
 
 class Post(models.Model):
-    content = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="images/posts/", blank=True, null=True)
+    title = models.CharField(_("Nome"), max_length=50)
+    text = models.TextField(blank=True, null=True)
+    image = models.ImageField(upload_to="posts/images", blank=True, null=True)
+    media = models.FileField(_("Mídia (Ex: Vídeo ou áudio)"), upload_to="posts/media/", blank=True, null=True)
     musician = models.ForeignKey("music.Musician", verbose_name=_("Músico"), on_delete=models.CASCADE)
 
     def __str__(self):

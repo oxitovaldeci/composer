@@ -22,4 +22,9 @@ urlpatterns = [
     path("albums/<int:album_index>/songs/add/", acc_views.SongCreateView.as_view(), name="songs-create"),
     path("albums/<int:album_index>/songs/update/<int:song_index>", acc_views.SongUpdateView.as_view(), name="songs-update"),
     path("albums/<int:album_index>/songs/delete/<int:song_index>", acc_views.SongDeleteView.as_view(), name="songs-delete"),
+
+    path("posts/", acc_views.PostListView.as_view(), name="posts-list"),
+    path("posts/add/", acc_views.PostCreateView.as_view(), name="posts-create"),
+    path("posts/update/<int:index>", acc_views.PostUpdateView.as_view(), name="posts-update"),
+    path("posts/delete/<int:index>", acc_views.PostDeleteView.as_view(), name="posts-delete"),
 ]

@@ -1,0 +1,55 @@
+{% extends 'accounts/base.html' %}
+{% load i18n widget_tweaks %}
+
+{% block title %}
+Criar/Editar Postagem
+{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-lg-8">
+      <div class="login-content">
+        <div class="login-form">
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.errors }}
+            {{ form.non_field_errors }}
+            <div class="form-group">
+              {{ form.title.label_tag }}
+              {% render_field form.title class+='form-control' %}
+              {% for error in form.title.errors %}
+                <div class="alert alert-danger">{{ error }}
+                </div>
+              {% endfor %}
+
+              {{ form.text.label_tag }}
+              {% render_field form.text class+='form-control' %}
+              {% for error in form.text.errors %}
+                <div class="alert alert-danger">{{ error }}
+                </div>
+              {% endfor %}
+
+              {{ form.image.label_tag }}
+              {% render_field form.image class+='form-control' %}
+              {% for error in form.image.errors %}
+                <div class="alert alert-danger">{{ error }}
+                </div>
+              {% endfor %}
+              <br />
+
+              {{ form.media.label_tag }}
+              {% render_field form.media class+='mb-15' %}
+              {% for error in form.media.errors %}
+                <div class="alert alert-danger">{{ error }}
+                </div>
+              {% endfor %}
+            </div>
+            <button type="submit" class="btn btn-info mt-30" style="width: 20vw;"> Confirmar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

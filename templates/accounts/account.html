@@ -31,30 +31,30 @@ Sua conta
     <a data-toggle="tab" href="#contacts">Contatos
     </a>
   </li>
+  <li>
+    <a data-toggle="tab" href="#posts">Mídias/postagens
+    </a>
+  </li>
 </ul>
 <div class="tab-content">
   <div class="tab-pane active" id="home">
-    <hr />
     <div class="form-group">
       <div class="col-xs-4">
         <label>Nome:
         </label>{{musician}}
-      </div>
-      <div class="col-xs-4">
-        <label>CPF:
-        </label>{{musician.document_number}}
+        <a href="{% url 'accounts:update' %}" class="btn btn-info mt-30" style="width: 20vw; margin: 10px">Editar perfil</a>
       </div>
       <div class="col-xs-4">
         <label>E-mail:
         </label>{{musician.email}}
       </div>
       <div class="col-xs-4">
+      {% comment %}
         <label>Estilos Musicais:
         </label>{{musician.styles}}
-          <a href="{% url 'accounts:update' %}" class="btn btn-info mt-30" style="width: 20vw; margin: 10px">Editar perfil</a>
+      {% endcomment %}
       </div>
     </div>
-    <hr />
   </div>
   <div class="tab-pane" id="albums">
     <h2>
@@ -65,6 +65,11 @@ Sua conta
     <h2>
     </h2>
     {% include 'accounts/contact/contacts.html' %}
+  </div>
+  <div class="tab-pane" id="posts">
+    <h2>
+    </h2>
+    {% include 'accounts/post/posts.html' %}
   </div>
   <!--/tab-pane-->
   <div class="tab-pane" id="settings">

@@ -30,6 +30,13 @@
                 {% endfor %}
                 <br />
 
+                {{ form.artistic_name.label_tag }}
+                {% render_field form.artistic_name class+='form-control' %}
+                {% for error in form.artistic_name.errors %}
+                  <div class="alert alert-danger">{{ error }}
+                  </div>
+                {% endfor %}
+
                 {{ form.music_styles.label_tag }}
                 {% render_field form.music_styles class+='form-control' %}
                 {% for error in form.music_styles.errors %}
