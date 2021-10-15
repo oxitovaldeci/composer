@@ -101,8 +101,8 @@ class Album(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Album"
-        verbose_name_plural = "Albuns"
+        verbose_name = "Álbum"
+        verbose_name_plural = "Álbuns"
 
 
 class Song(models.Model):
@@ -122,9 +122,9 @@ class Song(models.Model):
 
 
 class Post(models.Model):
-    title = models.CharField(_("Nome"), max_length=50)
-    text = models.TextField(blank=True, null=True)
-    image = models.ImageField(upload_to="posts/images", blank=True, null=True)
+    title = models.CharField(_("Título da postagem"), max_length=50)
+    text = models.TextField(_("Texto"),blank=True, null=True)
+    image = models.ImageField(_("Imagem"), upload_to="posts/images", blank=True, null=True)
     media = models.FileField(_("Mídia (Ex: Vídeo ou áudio)"), upload_to="posts/media/", blank=True, null=True)
     musician = models.ForeignKey("music.Musician", verbose_name=_("Músico"), on_delete=models.CASCADE)
 

@@ -1,7 +1,11 @@
 <div class="col-sm-3">
   <!--left col-->
   <div class="text-center">
-    <h3>{{ musician.name }}</h3>
+    {% if musician.artistic_name %}
+      <h3>{{ musician.artistic_name }}</h3>
+    {% else %}
+      <h3>{{ musician.name }}</h3>
+    {% endif %}
     {% if musician.image %}
       <img src="{{musician.image.url}}" class="avatar img-circle" alt="avatar"></img>
     {% else %}

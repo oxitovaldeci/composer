@@ -31,12 +31,11 @@ Criar/Editar Postagem
               {% endfor %}
 
               {{ form.image.label_tag }}
-              {% render_field form.image class+='form-control' %}
+              {% render_field form.image class+='mb-15' %}
               {% for error in form.image.errors %}
                 <div class="alert alert-danger">{{ error }}
                 </div>
               {% endfor %}
-              <br />
 
               {{ form.media.label_tag }}
               {% render_field form.media class+='mb-15' %}

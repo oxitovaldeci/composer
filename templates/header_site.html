@@ -42,8 +42,8 @@
                 <div class="classynav login-register-btn mr-50">
                   <ul>
                     {% if request.user.is_authenticated %}
-                      {% if musician %}
-                        <a href="{% url 'music:profile' slug=musician.slug %}" id="loginBtn">Seu Perfil</a>
+                      {% if request.user.musician.slug %}
+                        <a href="{% url 'music:profile' slug=request.user.musician.slug %}" id="loginBtn">Seu Perfil</a>
                       {% else %}
                         USUÁRIO AUTENTICADO PORÉM NÃO É MÚSICO!!!
                       {% endif %}

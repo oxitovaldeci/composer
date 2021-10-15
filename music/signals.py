@@ -14,7 +14,12 @@ from composer_utils import squarify, cprint
 @receiver(pre_save, sender=Musician)
 def musician_before_saving(sender, instance, **kwargs):
     if instance.slug is None or instance.slug == "":
-        instance.slug = slugify(instance.name)
+        name = instance.artistic_name
+
+        if not name:
+            name = instance.name
+
+        instance.slug = slugify(name)
 
     aux = squarify(instance.image)
     instance.image = InMemoryUploadedFile(
