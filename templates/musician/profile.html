@@ -1009,6 +1009,14 @@ main
 #sel h4:hover:after {
   width: 100%;
   left: 0;
+{% endblock %}
+
+{% block style_overlap %}
+.nav {
+  justify-content: center;
+}
+#p-tabs-m span {
+  margin: 1em;
 }
 {% endblock %}
 
@@ -1086,12 +1094,13 @@ main
         <div class="td col-sm-9" id="m-col">
           <div class="m-mrg floating-box" id="p-tabs">
             <div class="td">
-              <div class="tb nav nav-tabs" id="p-tabs-m">
-                <li class="active">
-                  <a data-toggle="tab" href="#albuns" class="td"><span>ALBUNS/CDS</span></a>
-                 </li>
-                 <li><a data-toggle="tab" href="#events" class="td"><span>EVENTOS</span></a></li>
-                 <li><a data-toggle="tab" href="#posts" class="td"><span>MÍDIAS/POSTAGENS</span></a></li>
+              <div class="tb" id="p-tabs-m">
+                <ul class="nav nav-tabs">
+                  <li class="active">
+                    <a data-toggle="tab" href="#albums" class="td"><span>ALBUNS/CDS</span></a>
+                   </li>
+                   <li><a data-toggle="tab" href="#posts" class="td"><span>MÍDIAS/POSTAGENS</span></a></li>
+                </ul>
               </div>
             </div>
           </div>
@@ -1126,7 +1135,6 @@ main
                 <p style="color: lightgray;">Sem albums disponíveis.</p>
               {% endif %}
             </div>
-            <div class="tab-pane" id="events"></div>
             <div class="tab-pane" id="posts"></div>
           </div>
         <div id="loading"><i class="material-icons"></i></div>
