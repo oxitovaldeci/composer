@@ -793,7 +793,6 @@ main
 .p-r-hdr
 {
   vertical-align: top;
-  padding-left: 20px;
 }
 .p-u-info
 {
@@ -982,8 +981,9 @@ main
   max-width: 1400px !important;
 }
 .album {
-  /*  height: 200px; */
-  width: 200px;
+  /* height: 200px; */ 
+  width: 300px;
+  float: right;
 }
 .floating-box {
   border: none;
@@ -1015,8 +1015,8 @@ main
 .nav {
   justify-content: center;
 }
-#p-tabs-m span {
-  margin: 1em;
+#p-tabs-m li {
+  flex: 1;
 }
 {% endblock %}
 
@@ -1112,6 +1112,7 @@ main
                     <div class="post floating-box">
                       <div class="tb">
                         <div class="td p-r-hdr">
+                          <img src="{{ album.cover.url }}" class="album" style="" alt="Cover" />
                           <div class="p-u-info" id="sel">
                             <span><h4>{{ album.name }}</h4></span>
                           </div>
@@ -1126,7 +1127,6 @@ main
                             {% endif %}
                           </div>
                         </div>
-                        <img src="{{ album.cover.url }}" class="pull-right album" style="float:right;margin-left:20px" alt="Cover">
                       </div>
                     </div>
                   </a>
