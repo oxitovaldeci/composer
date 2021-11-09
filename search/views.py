@@ -12,7 +12,7 @@ def search_view(request, *args, **kwargs):
     else:
         musician = None
 
-    result = None
+    result = Musician.objects.all()
     if request.GET.get("query"):
         query = request.GET.get("query")
         if query == "*":
