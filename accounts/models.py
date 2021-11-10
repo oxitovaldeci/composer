@@ -11,7 +11,7 @@ class UserManager(BaseUserManager):
         now = timezone.now()
         email = self.normalize_email(email)
         user = self.model(
-            email=email, is_active=True, 
+            email=email, is_active=True,
             is_superuser=False, date_joined=now
         )
         user.set_password(password)
@@ -22,7 +22,7 @@ class UserManager(BaseUserManager):
         now = timezone.now()
         email = self.normalize_email(email)
         user = self.model(
-            email=email, is_active=True, is_staff=True, 
+            email=email, is_active=True, is_staff=True,
             is_superuser=True, date_joined=now, **extra_fields
         )
         user.set_password(password)
@@ -32,7 +32,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField('E-mail', null=False, blank=False, unique=True)
-     
+
     is_staff = models.BooleanField('staff status', default=False)
     date_joined = models.DateTimeField('date joined', auto_now_add=True)
     is_active = models.BooleanField('active', default=True)
@@ -47,4 +47,3 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = 'Usuário'
         verbose_name_plural = 'Usuários'
-        

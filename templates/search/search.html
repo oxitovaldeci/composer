@@ -11,8 +11,14 @@
     {% for r in result %}
       <a href="{% url 'music:profile' slug=r.slug %}">
         <div class="results">
-          <img src="{{ r.image.url}}" class="" style="height: 70px;" alt="avatar"></img>
-          <h5>{{ r.name }}</h5>
+          <img src="{{ r.image.url }}" class="" style="height: 70px;" alt="avatar"></img>
+          <h5>
+            {% if r.artistic_name %}
+              {{ r.artistic_name }}
+            {% else %}
+              {{ r.name }}
+            {% endif %}
+          </h5>
           {{ r.description }}
         </div>
       </a>

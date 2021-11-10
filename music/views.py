@@ -1,8 +1,6 @@
-from django.http.response import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Album, Contact, Musician, Song
-from composer_utils import cprint
 
 
 def get_musician_context(musician):

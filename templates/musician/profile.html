@@ -981,7 +981,7 @@ main
   max-width: 1400px !important;
 }
 .album {
-  /* height: 200px; */ 
+  /* height: 200px; */
   width: 300px;
   float: right;
 }
@@ -1033,7 +1033,13 @@ main
           <img src="/media/profile_placeholder.png" class="avatar img-circle img-thumbnail" alt="Adicione uma foto"></img>
         {% endif %}
       </div>
-      <div id="u-name">{{musician.name}}</div>
+      <div id="u-name">
+        {% if musician.artistic_name %}
+          {{ musician.artistic_name }}
+        {% else %}
+          {{ musician.name }}
+        {% endif %}
+      </div>
       <div class="tb" id="m-btns">
         {% if request.user.musician %}
           {% if request.user.musician.slug == musician.slug %}

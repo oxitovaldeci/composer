@@ -1,18 +1,11 @@
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.files.uploadedfile import InMemoryUploadedFile
-from django.http.response import HttpResponseRedirect, HttpResponse, JsonResponse
-from django.shortcuts import render, get_object_or_404, redirect
+from django.http.response import HttpResponseRedirect
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views import View
-from django.views.generic import DetailView, ListView
-from django.views.generic.base import TemplateView
+from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
-import sys
-
-from composer_utils import cprint, squarify
-from accounts.models import User
 from music.models import Album, Contact, Musician, Post, Song
 from music.views import get_musician_context
 

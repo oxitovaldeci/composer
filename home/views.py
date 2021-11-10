@@ -1,8 +1,7 @@
-from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
 from music.models import Album, Song
-from composer_utils import cprint
+
 
 class IndexTemplateView(TemplateView):
     template_name = "home/index.html"
@@ -13,7 +12,7 @@ class IndexTemplateView(TemplateView):
         user = self.request.user
         user_is_musician = hasattr(user, "musician")
         albums = Album.objects.all()
-        albums_count = albums.count()
+        # albums_count = albums.count()
 
         if user_is_musician:
             context["musician"] = user.musician

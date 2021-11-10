@@ -2,13 +2,11 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django.template.defaultfilters import slugify
-from django.utils.crypto import get_random_string
 
-import string
 import sys
 
 from .models import Musician, Album
-from composer_utils import squarify, cprint
+from composer_utils import squarify
 
 
 @receiver(pre_save, sender=Musician)
