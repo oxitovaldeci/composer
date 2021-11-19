@@ -11,7 +11,8 @@ def search_view(request, *args, **kwargs):
     else:
         musician = None
 
-    result = Musician.objects.all()
+    result = Musician.objects.all().order_by('?')[:40]
+    query = None
     if request.GET.get("query"):
         query = request.GET.get("query")
         if query == "*":
@@ -20,4 +21,4 @@ def search_view(request, *args, **kwargs):
             f = Musician.objects.filter
             result = f(Q(name__unaccent__icontains=query) | Q(artistic_name__unaccent__icontains=query))
 
-    return render(request, "search/search.html", {"result": result, **get_musician_context(musician)})
+    return render(request, "search/search.html", {"result": result, "display_query": query or "Composer", **get_musician_context(musician)})

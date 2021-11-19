@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
-from .models import Album, Contact, Musician, Song
+from .models import Album, Contact, Musician, Song, Post
 
 
 def get_musician_context(musician):
@@ -8,6 +8,7 @@ def get_musician_context(musician):
         "musician": musician,
         "albums": Album.objects.filter(musician=musician),
         "contacts": Contact.objects.filter(musician=musician),
+        "posts": Post.objects.filter(musician=musician)
     }
     return context
 

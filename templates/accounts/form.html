@@ -1,7 +1,7 @@
 {% extends 'base_site.html' %}
 {% load i18n widget_tweaks %}
 {% block content %}
-<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/static/img/bg-img/breadcumb3.jpg);">
   <div class="bradcumbContent">
     <h2>Cadastro
     </h2>
@@ -57,8 +57,8 @@
                   </div>
                 {% endfor %}
               </div>
-              <button type="submit" class="btn btn-info mt-30" style="width: 20vw;">Cadastrar</button>
-              <a href="{% url 'login' %}" class="btn btn-dark mt-30" style="width: 20vw;">Já tenho conta</a>
+              <button type="submit" class="btn btn-info mt-30" style="width: 20em;">Cadastrar</button>
+              <a href="{% url 'login' %}" class="btn btn-dark mt-30" style="width: 20em;">Já tenho conta</a>
             </form>
           </div>
         </div>

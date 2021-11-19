@@ -6,8 +6,6 @@ from accounts.models import User
 class MusicStyle(models.Model):
     name = models.CharField(_("Nome"), max_length=150, null=False, blank=False)
     slug = models.SlugField(_("Slug"))
-    created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
-    updated_at = models.DateTimeField(_("Data Última Modificação"), auto_now=True)
 
     def __str__(self):
         return self.name
@@ -65,7 +63,7 @@ class Musician(User):
     music_styles = models.ManyToManyField("music.MusicStyle", verbose_name=_("Estilo Musical"), blank=True)
 
     created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
-    updated_at = models.DateTimeField(_("Data Última Modificação"), auto_now=True)
+    updated_at = models.DateTimeField(_("Data de Última Modificação"), auto_now=True)
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Musician._meta.fields]
@@ -95,7 +93,7 @@ class Album(models.Model):
     slug = models.SlugField(_("Slug"), null=True)
 
     created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
-    updated_at = models.DateTimeField(_("Data Última Modificação"), auto_now=True)
+    updated_at = models.DateTimeField(_("Data de Última Modificação"), auto_now=True)
 
     def __str__(self):
         return self.name
@@ -113,6 +111,9 @@ class Song(models.Model):
     order = models.IntegerField(_("Ordem"))
     file = models.FileField(_("Arquivo"), upload_to="music/")
 
+    created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Data de Última Modificação"), auto_now=True)
+
     def __str__(self):
         return self.name
 
@@ -123,10 +124,13 @@ class Song(models.Model):
 
 class Post(models.Model):
     title = models.CharField(_("Título da postagem"), max_length=50)
-    text = models.TextField(_("Texto"),blank=True, null=True)
+    text = models.TextField(_("Texto"), blank=True, null=True)
     image = models.ImageField(_("Imagem"), upload_to="posts/images", blank=True, null=True)
     media = models.FileField(_("Mídia (Ex: Vídeo ou áudio)"), upload_to="posts/media/", blank=True, null=True)
     musician = models.ForeignKey("music.Musician", verbose_name=_("Músico"), on_delete=models.CASCADE)
+
+    created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
+    updated_at = models.DateTimeField(_("Data de Última Modificação"), auto_now=True)
 
     def __str__(self):
         return f"{str(self.musician)} - {str(self.id)}"

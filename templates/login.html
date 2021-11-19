@@ -1,6 +1,6 @@
 {% extends 'base_site.html' %}
 {% block content %}
-<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(img/bg-img/breadcumb3.jpg);">
+<section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/static/img/bg-img/breadcumb3.jpg);">
   <div class="bradcumbContent">
     <h2>Login</h2>
   </div>
@@ -30,8 +30,8 @@
                 <label for="exampleInputPassword1">Senha</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Sua senha" name="password">
               </div>
-              <button type="submit" class="btn btn-info mt-30" style="width: 20vw;">Login</button>
-              <a href="{% url 'accounts:create' %}" class="btn btn-dark mt-30" style="width: 20vw;">Registre-se</a>
+              <button type="submit" class="btn btn-info mt-30" style="width: 20em;">Login</button>
+              <a href="{% url 'accounts:create' %}" class="btn btn-dark mt-30" style="width: 20em;">Registre-se</a>
             </form>
           </div>
         </div>

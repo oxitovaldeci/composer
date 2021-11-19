@@ -1252,7 +1252,8 @@ img {
     @media only screen and (max-width: 767px) {
       .breadcumb-area .bradcumbContent {
         width: calc(100% - 60px);
-        padding-top: 30px; } }
+        padding-top: 30px;
+        padding-bottom: 30px; } }
     .breadcumb-area .bradcumbContent p {
       line-height: 1.5;
       font-size: 16px;
