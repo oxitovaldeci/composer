@@ -1141,7 +1141,34 @@ main
                 <p style="color: lightgray;">Sem albums disponíveis.</p>
               {% endif %}
             </div>
-            <div class="tab-pane" id="posts"></div>
+            <div class="tab-pane" id="posts">
+              {% if posts %}
+                {% for post in posts %}
+                  {% comment %} <a href=""> {% endcomment %}
+                    <div class="post floating-box">
+                      <div class="tb">
+                        <div class="td p-r-hdr">
+                         {% if post.image %}
+                          <img src="{{ post.image.url }}" class="post" style="" alt="Imagem" />
+                         {% endif %}
+                          <div class="p-u-info" id="sel">
+                            <span><h4>{{ post.title }}</h4></span>
+                          </div>
+                          <div class="p-dt">
+                            <span>Postagem em {{ post.created_at }}</span>
+                          </div>
+                          <div>
+                            {{ post.text }}<br />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  {% comment %} </a> {% endcomment %}
+                {% endfor %}
+              {% else %}
+                <p style="color: lightgray;">Sem postagens disponíveis.</p>
+              {% endif %}
+            </div>
           </div>
         <div id="loading"><i class="material-icons"></i></div>
         </div>

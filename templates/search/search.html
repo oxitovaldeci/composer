@@ -23,7 +23,9 @@
               {{ r.name }}
             {% endif %}
           </h5>
-          {{ r.description }}
+          {% if r.description %}
+            {{ r.description }}
+          {% endif %}
         </div>
       </a>
     {% endfor %}
