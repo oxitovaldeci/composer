@@ -1,0 +1,9 @@
+{
+    "version": "2.0.0",
+    "tasks": [{
+        "label": "start_postgres",
+        "command": "${workspaceFolder}/postgres.sh",
+        "args": ["start"],
+        "type": "shell"
+    }],
+}
