@@ -126,7 +126,6 @@ class Post(models.Model):
     title = models.CharField(_("Título da postagem"), max_length=50)
     text = models.TextField(_("Texto"), blank=True, null=True)
     image = models.ImageField(_("Imagem"), upload_to="posts/images", blank=True, null=True)
-    media = models.FileField(_("Mídia (Ex: Vídeo ou áudio)"), upload_to="posts/media/", blank=True, null=True)
     musician = models.ForeignKey("music.Musician", verbose_name=_("Músico"), on_delete=models.CASCADE)
 
     created_at = models.DateTimeField(_("Data de Criação"), auto_now_add=True)
