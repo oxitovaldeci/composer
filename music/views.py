@@ -2,6 +2,8 @@ from django.shortcuts import render, get_object_or_404, redirect
 
 from .models import Album, Contact, Musician, Song, Post
 
+from random import choice
+
 
 def get_musician_context(musician):
     context = {
@@ -29,7 +31,7 @@ def profile_view(request, slug=None, *args, **kwargs):
             return redirect("login")
 
     musician = get_object_or_404(Musician, slug=slug)
-    return render(request, "musician/profile.html", get_musician_context(musician))
+    return render(request, "musician/profile.html", {**get_musician_context(musician), "primary_color": choice(["#cc0000", "#4e9a06", "#edd400", "#3465a4", "#92659a", "#07c7ca"])})
 
 
 def album_view(request, musician_slug=None, album_slug=None, *args, **kwargs):
