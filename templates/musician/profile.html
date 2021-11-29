@@ -7,7 +7,7 @@
 body
 {
   margin:40px 0px;
-  background: #000 !important;
+  background: #505050 !important;
 }
 body, input, button
 {
@@ -141,7 +141,7 @@ main
 }
 #f-name-l span
 {
-  padding-right: 28px;
+  padding-right: 20px;
   /* border-right: 1px solid #000; */
 }
 #i-links
@@ -344,7 +344,7 @@ main
 }
 .l-mrg
 {
-  margin-top: 28px;
+  margin-top: 20px;
 }
 .l-i
 {
@@ -569,7 +569,7 @@ main
 }
 .m-mrg
 {
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 #p-tabs
 {
@@ -784,7 +784,7 @@ main
   padding: 20px;
   background-color: #fff;
   border-radius: 10px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
   /* box-shadow: 0px 3px 3px #ddd; */
 }
 .p-p-pic
@@ -935,7 +935,7 @@ main
   position: relative;
   width: 50px;
   height: 50px;
-  margin: 28px auto 0 auto;
+  margin: 20px auto 0 auto;
   border-radius: 50%;
 }
 #cts .on-ct:first-child
@@ -1036,6 +1036,10 @@ main
 .row {
   margin-bottom: 50px;
 }
+#album-add {
+}
+.edit-account {
+}
 {% endblock %}
 
 {% block content %}
@@ -1130,6 +1134,15 @@ main
           </div>
           <div class="tab-content">
             <div class="tab-pane active" id="albums">
+              {% if request.user.musician %}
+                {% if request.user.musician.slug == musician.slug %}
+                  <div class="post floating-box" style="padding: 6px; width: min-content;">
+                    <div class="edit-account td">
+                      <a id="album-add" href="/accounts/albums/add/" class="btn"><i class="fas fa-plus"></i> Adicionar Álbum</a>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
               {% if albums %}
                 {% for album in albums %}
                   <a href="{% url 'music:album' musician_slug=musician.slug album_slug=album.slug %}">
