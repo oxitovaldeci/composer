@@ -57,7 +57,7 @@ class Musician(User):
     artistic_name = models.CharField("Nome Artístico", max_length=100)
     date_of_birth = models.DateField("Data de Nascimento", blank=False, null=True)
     description = models.TextField(_("Descrição do Perfil"), blank=True, null=True)
-    image = models.ImageField(_("Foto"), upload_to="images/profile/", default='profile_placeholder.png')
+    image = models.ImageField(_("Foto"), upload_to="images/profile/", default='images/profile/profile_placeholder.png')
     slug = models.SlugField(_("Slug"), null=True)
 
     music_styles = models.ManyToManyField("music.MusicStyle", verbose_name=_("Estilo Musical"), blank=True)
@@ -88,7 +88,7 @@ class Album(models.Model):
     description = models.TextField(_("Descrição"), null=False, blank=False)
     release_year = models.PositiveSmallIntegerField(_("Ano de Lançamento"), null=True, blank=True)
     amount_track = models.PositiveSmallIntegerField(_("Quantidade de Faixas"), null=True, blank=True)
-    cover = models.ImageField(_("Capa"), upload_to="images/covers/", null=False, blank=False)
+    cover = models.ImageField(_("Capa"), upload_to="images/covers/", default="images/covers/cover_placeholder.jpg")
     musician = models.ForeignKey("music.Musician", verbose_name=_("Músico"), on_delete=models.CASCADE)
     slug = models.SlugField(_("Slug"), null=True)
 
@@ -101,6 +101,7 @@ class Album(models.Model):
     class Meta:
         verbose_name = "Álbum"
         verbose_name_plural = "Álbuns"
+        ordering = ['-created_at']
 
 
 class Song(models.Model):
@@ -120,6 +121,7 @@ class Song(models.Model):
     class Meta:
         verbose_name = "Música"
         verbose_name_plural = "Músicas"
+        ordering = ['-created_at']
 
 
 class Post(models.Model):
@@ -137,3 +139,4 @@ class Post(models.Model):
     class Meta:
         verbose_name = "Postagem"
         verbose_name_plural = "Postagens"
+        ordering = ['-created_at']
