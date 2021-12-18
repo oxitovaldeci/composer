@@ -14,7 +14,6 @@
       <th>Título</th>
       <th>Texto</th>
       <th>Imagem</th>
-      <th>Mídia</th>
     </tr>
   </thead>
   <tbody>
@@ -25,7 +24,6 @@
       <td>
         <img src="{{ post.image.url }}" class="avatar img-thumbnail" alt="avatar" style="width: 200px;"></img>
       </td>
-      <td>{{post.media}}</td>
       <td class="button-post">
         <div class="panel-heading">
           <a href="{% url 'accounts:posts-update' index=post.id %}" class="btn btn-info"><i class="fas fa-edit"></i> Editar</a>

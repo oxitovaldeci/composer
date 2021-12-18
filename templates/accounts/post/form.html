@@ -36,13 +36,6 @@ Criar/Editar Postagem
                 <div class="alert alert-danger">{{ error }}
                 </div>
               {% endfor %}
-
-              {{ form.media.label_tag }}
-              {% render_field form.media class+='mb-15' %}
-              {% for error in form.media.errors %}
-                <div class="alert alert-danger">{{ error }}
-                </div>
-              {% endfor %}
             </div>
             <button type="submit" class="btn btn-info mt-30" style="width: 20em;"> Confirmar</button>
           </form>
