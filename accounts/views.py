@@ -253,7 +253,7 @@ class SongDeleteView(SongManagerView, DeleteView):
 class PostGenericView(MusicianItemView):
     model = Post
     template_name = "accounts/post/form.html"
-    fields = ["title", "text", "image", "media"]
+    fields = ["title", "text", "image"]
     success_url = reverse_lazy("accounts:posts-list")
 
 
