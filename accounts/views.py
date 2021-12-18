@@ -277,7 +277,6 @@ class PostCreateView(PostGenericView, CreateView):
         post.title = form.cleaned_data.pop("title")
         post.text = form.cleaned_data.pop("text")
         post.image = form.cleaned_data.pop("image")
-        post.media = form.cleaned_data.pop("media")
         post.musician = self.request.user.musician
         post.save()
         return HttpResponseRedirect(self.success_url)
@@ -289,7 +288,6 @@ class PostUpdateView(PostManagerView, UpdateView):
         post.title = form.cleaned_data.pop("title")
         post.text = form.cleaned_data.pop("text")
         post.image = form.cleaned_data.pop("image")
-        post.media = form.cleaned_data.pop("media")
         post.musician = self.request.user.musician
         post.save()
         return HttpResponseRedirect(self.success_url)
